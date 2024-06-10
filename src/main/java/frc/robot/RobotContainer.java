@@ -9,8 +9,8 @@ import frc.robot.Constants.PortConstants;
 
 public class RobotContainer {
 
-  private final CommandXboxController driverController = new CommandXboxController(PortConstants.kDriverControllerPort);
-  private final CommandXboxController operatorController = new CommandXboxController(PortConstants.kOperatorControllerPort);
+  private final CommandXboxController driverController = new CommandXboxController(PortConstants.DRIVER_CONTROLLER_PORT);
+  private final CommandXboxController operatorController = new CommandXboxController(PortConstants.OPERATOR_CONTROLLER_PORT);
 
   public RobotContainer() {
     configureBindings();
