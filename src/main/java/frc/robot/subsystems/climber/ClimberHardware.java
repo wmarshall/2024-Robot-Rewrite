@@ -1,6 +1,7 @@
 package frc.robot.subsystems.climber;
 
 import frc.robot.Constants.MotorIdConstants;
+import frc.robot.subsystems.climber.ClimberSubsystem.ClimberConstants;
 import frc.robot.Constants.MotorConstants;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.SoftLimitDirection;
@@ -20,14 +21,14 @@ public class ClimberHardware implements ClimberIO {
         leftMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
 
         //probably could make this stuff better, leaving for now
-        leftMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberSubsystem.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
+        leftMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
         leftMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
-        rightMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberSubsystem.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
+        rightMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
         rightMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
-        leftMotor.setSoftLimit(SoftLimitDirection.kForward, (float)(ClimberSubsystem.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
+        leftMotor.setSoftLimit(SoftLimitDirection.kForward, (float)(ClimberConstants.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
         leftMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
-        rightMotor.setSoftLimit(SoftLimitDirection.kForward, (float)(ClimberSubsystem.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
+        rightMotor.setSoftLimit(SoftLimitDirection.kForward, (float)(ClimberConstants.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
         rightMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
     }
 
