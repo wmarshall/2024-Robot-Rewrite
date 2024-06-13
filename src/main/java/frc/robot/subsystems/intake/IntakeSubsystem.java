@@ -16,7 +16,7 @@ public class IntakeSubsystem extends SubsystemBase {
         this.intakeIO = intakeIO;
     }
 
-    public Command RunIntake(double speed) {
+    public Command runIntake(double speed) {
         return this.run(() -> intakeIO.setMotors(speed));
     }
 }
