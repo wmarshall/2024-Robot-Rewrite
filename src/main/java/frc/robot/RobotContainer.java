@@ -22,8 +22,10 @@ public class RobotContainer {
 
   private final CommandFactory commandFactory = new CommandFactory(indexer, intake);
 
-  private final CommandXboxController driverController = new CommandXboxController(PortConstants.DRIVER_CONTROLLER_PORT);
-  private final CommandXboxController operatorController = new CommandXboxController(PortConstants.OPERATOR_CONTROLLER_PORT);
+  private final CommandXboxController driverController = new CommandXboxController(
+      PortConstants.DRIVER_CONTROLLER_PORT);
+  private final CommandXboxController operatorController = new CommandXboxController(
+      PortConstants.OPERATOR_CONTROLLER_PORT);
 
   public RobotContainer() {
     configureDefaultCommands();

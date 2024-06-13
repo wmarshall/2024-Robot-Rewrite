@@ -1,4 +1,5 @@
 package frc.robot;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.subsystems.indexer.IndexerSubsystem;
@@ -16,22 +17,20 @@ public class CommandFactory {
 
     public Command automaticIntake() {
         return Commands.either(
-            Commands.parallel(indexer.runIndexer(0), intake.runIntake(0)),
-            this.manualIntake(),
-            () -> indexer.isBeamBroken());
+                Commands.parallel(indexer.runIndexer(0), intake.runIntake(0)),
+                this.manualIntake(),
+                () -> indexer.isBeamBroken());
     }
 
     public Command manualIntake() {
         return Commands.parallel(
-            indexer.runIndexer(IntakeConstants.INTAKE_SPEED), 
-            intake.runIntake(IntakeConstants.INTAKE_SPEED)
-        );
+                indexer.runIndexer(IntakeConstants.INTAKE_SPEED),
+                intake.runIntake(IntakeConstants.INTAKE_SPEED));
     }
 
     public Command outtake() {
         return Commands.parallel(
-            indexer.runIndexer(IntakeConstants.OUTTAKE_SPEED), 
-            intake.runIntake(IntakeConstants.OUTTAKE_SPEED)
-        );
+                indexer.runIndexer(IntakeConstants.OUTTAKE_SPEED),
+                intake.runIntake(IntakeConstants.OUTTAKE_SPEED));
     }
 }

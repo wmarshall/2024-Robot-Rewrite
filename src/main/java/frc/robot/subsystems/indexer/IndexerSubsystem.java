@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class IndexerSubsystem extends SubsystemBase {
     private final IndexerIO indexerIO;
 
-    //this is an excellent example of this pattern being bad
+    // this is an excellent example of this pattern being bad
     public static final class IndexerConstants {
         public static final double INDEXER_FEED_SPEED = 0.3;
     }
@@ -19,7 +19,7 @@ public class IndexerSubsystem extends SubsystemBase {
         return this.run(() -> indexerIO.setMotor(speed));
     }
 
-    public boolean isBeamBroken(){
+    public boolean isBeamBroken() {
         return indexerIO.isBeamBroken();
     }
 }

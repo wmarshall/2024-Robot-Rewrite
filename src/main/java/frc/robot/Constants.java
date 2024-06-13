@@ -16,6 +16,7 @@ public final class Constants {
     public static final int RIGHT_INTAKE_CENTERING_MOTOR_ID = 2;
     public static final int LEFT_INTAKE_CENTERING_MOTOR_ID = 3;
     public static final int INTAKE_MOTOR_ID = 4;
+    public static final int INDEXER_MOTOR_ID = 5;
   }
 
   public static class MotorConstants {

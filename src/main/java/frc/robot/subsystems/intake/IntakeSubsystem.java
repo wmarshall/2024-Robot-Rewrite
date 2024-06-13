@@ -10,6 +10,7 @@ public class IntakeSubsystem extends SubsystemBase {
         public static final double OUTTAKE_SPEED = -0.3;
         public static final double INTAKE_SPEED = 1;
     }
+
     private final IntakeIO intakeIO;
 
     public IntakeSubsystem(IntakeIO intakeIO) {

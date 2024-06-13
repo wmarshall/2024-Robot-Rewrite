@@ -10,7 +10,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 public class ClimberHardware implements ClimberIO {
     private final CANSparkMax rightMotor, leftMotor;
 
-    public ClimberHardware(){
+    public ClimberHardware() {
         rightMotor = new CANSparkMax(MotorIdConstants.RIGHT_CLIMBER_MOTOR_ID, MotorType.kBrushless);
         leftMotor = new CANSparkMax(MotorIdConstants.LEFT_CLIMBER_MOTOR_ID, MotorType.kBrushless);
 
@@ -23,15 +23,19 @@ public class ClimberHardware implements ClimberIO {
         rightMotor.setInverted(false);
         leftMotor.setInverted(false);
 
-        //probably could make this stuff better, leaving for now
-        leftMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
+        // probably could make this stuff better, leaving for now
+        leftMotor.setSoftLimit(SoftLimitDirection.kReverse,
+                (float) (ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
         leftMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
-        rightMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
+        rightMotor.setSoftLimit(SoftLimitDirection.kReverse,
+                (float) (ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
         rightMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
-        leftMotor.setSoftLimit(SoftLimitDirection.kForward, (float)(ClimberConstants.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
+        leftMotor.setSoftLimit(SoftLimitDirection.kForward,
+                (float) (ClimberConstants.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
         leftMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
-        rightMotor.setSoftLimit(SoftLimitDirection.kForward, (float)(ClimberConstants.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
+        rightMotor.setSoftLimit(SoftLimitDirection.kForward,
+                (float) (ClimberConstants.CLIMBER_HEIGHT_UPPER_LIMIT - .01));
         rightMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
     }
 
@@ -42,7 +46,7 @@ public class ClimberHardware implements ClimberIO {
 
     @Override
     public void setLeftSpeed(double speed) {
-       leftMotor.set(speed);
+        leftMotor.set(speed);
     }
 
     @Override

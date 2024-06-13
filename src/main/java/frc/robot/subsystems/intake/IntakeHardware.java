@@ -17,7 +17,8 @@ public class IntakeHardware implements IntakeIO {
     private SparkPIDController intakePIDController;
 
     public IntakeHardware() {
-        leftCenteringIntakeMotor = new CANSparkMax(MotorIdConstants.LEFT_INTAKE_CENTERING_MOTOR_ID, MotorType.kBrushless);
+        leftCenteringIntakeMotor = new CANSparkMax(MotorIdConstants.LEFT_INTAKE_CENTERING_MOTOR_ID,
+                MotorType.kBrushless);
         rightCenteringIntakeMotor = new CANSparkMax(MotorIdConstants.LEFT_CLIMBER_MOTOR_ID, MotorType.kBrushless);
         intakeMotor = new CANSparkMax(MotorIdConstants.INTAKE_MOTOR_ID, MotorType.kBrushless);
 
@@ -34,11 +35,11 @@ public class IntakeHardware implements IntakeIO {
         intakeMotor.setInverted(false);
 
         intakeEncoder = intakeMotor.getEncoder();
-        intakeEncoder.setVelocityConversionFactor(1/60.0);
+        intakeEncoder.setVelocityConversionFactor(1 / 60.0);
 
         intakePIDController = intakeMotor.getPIDController();
         intakePIDController.setFeedbackDevice(intakeEncoder);
-        
+
         intakePIDController.setFF(IntakeConstants.INTAKE_FEEDFORWARD);
         intakePIDController.setP(IntakeConstants.INTAKE_PVALUE);
     }

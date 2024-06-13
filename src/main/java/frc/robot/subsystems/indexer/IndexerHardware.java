@@ -13,7 +13,7 @@ public class IndexerHardware implements IndexerIO {
     private static final int INDEXER_BEAM_BREAK_SENSOR_PORT = 2;
 
     public IndexerHardware() {
-        indexerMotor = new CANSparkMax(MotorIdConstants.RIGHT_CLIMBER_MOTOR_ID, MotorType.kBrushless);
+        indexerMotor = new CANSparkMax(MotorIdConstants.INDEXER_MOTOR_ID, MotorType.kBrushless);
 
         indexerMotor.restoreFactoryDefaults();
         indexerMotor.setInverted(false);
@@ -31,5 +31,5 @@ public class IndexerHardware implements IndexerIO {
     public void setMotor(double speed) {
         indexerMotor.set(speed);
     }
-    
+
 }
