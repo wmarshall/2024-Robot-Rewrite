@@ -40,7 +40,7 @@ public class ClimberSubsystem extends SubsystemBase {
     }
 
     public Command setLeftSpeed(double speed){
-        if(speed < 0 && !this.isRightSideStalling() && this.isLeftSideStalling()){
+        if(speed < 0 && !this.isRightSideStalling() && this.isLeftSideStalling()) {
             return this.run(() -> climberIO.setLeftSpeed(0));
         }
         else {
@@ -48,11 +48,11 @@ public class ClimberSubsystem extends SubsystemBase {
         }
     }
 
-    public boolean isLeftSideStalling() {
+    private boolean isLeftSideStalling() {
         return leftDebouncer.calculate(Math.abs(climberIO.getLeftMotorCurrent()) > CURRENT_THRESHOLD);
     }
 
-    public boolean isRightSideStalling() {
+    private boolean isRightSideStalling() {
         return rightDebouncer.calculate(Math.abs(climberIO.getRightMotorCurrent()) > CURRENT_THRESHOLD);
     }
 }

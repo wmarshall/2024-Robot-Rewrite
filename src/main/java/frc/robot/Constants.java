@@ -17,6 +17,6 @@ public final class Constants {
 
   public static class MotorConstants {
     public static final int NEO550_CURRENT_LIMIT = 20;
-  public static final int NEO_CURRENT_LIMIT = 50;
+    public static final int NEO_CURRENT_LIMIT = 50;
   }
 }

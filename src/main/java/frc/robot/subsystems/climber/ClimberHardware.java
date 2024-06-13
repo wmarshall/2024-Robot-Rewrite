@@ -20,6 +20,9 @@ public class ClimberHardware implements ClimberIO {
         rightMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
         leftMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
 
+        rightMotor.setInverted(false);
+        leftMotor.setInverted(false);
+
         //probably could make this stuff better, leaving for now
         leftMotor.setSoftLimit(SoftLimitDirection.kReverse, (float)(ClimberConstants.CLIMBER_HEIGHT_LOWER_LIMIT + .01));
         leftMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);

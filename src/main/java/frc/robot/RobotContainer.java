@@ -22,7 +22,7 @@ public class RobotContainer {
     configureOperatorBindings();
   }
 
-  private void configureDriverBindings(){
+  private void configureDriverBindings() {
 
   }
 
