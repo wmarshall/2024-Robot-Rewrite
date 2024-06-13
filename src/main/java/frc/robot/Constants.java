@@ -13,6 +13,9 @@ public final class Constants {
   public static class MotorIdConstants {
     public static final int RIGHT_CLIMBER_MOTOR_ID = 0;
     public static final int LEFT_CLIMBER_MOTOR_ID = 1;
+    public static final int RIGHT_INTAKE_CENTERING_MOTOR_ID = 2;
+    public static final int LEFT_INTAKE_CENTERING_MOTOR_ID = 3;
+    public static final int INTAKE_MOTOR_ID = 4;
   }
 
   public static class MotorConstants {

@@ -11,8 +11,8 @@ public class ClimberSubsystem extends SubsystemBase {
     private Debouncer leftDebouncer, rightDebouncer = new Debouncer(0.025);
 
     public static final class ClimberConstants {
-        public static final double CLIMBER_HEIGHT_UPPER_LIMIT = 0.8;
-        public static final double CLIMBER_HEIGHT_LOWER_LIMIT = 0;
+        protected static final double CLIMBER_HEIGHT_UPPER_LIMIT = 0.8;
+        protected static final double CLIMBER_HEIGHT_LOWER_LIMIT = 0;
         public static final double CLIMBER_SPEED_CONCURRENT = 0.9;
         public static final double CLIMBER_SPEED_SINGLE = 0.5;
     }
