@@ -8,7 +8,8 @@ public class IndexerSubsystem extends SubsystemBase {
 
     // this is an excellent example of this pattern being bad
     public static final class IndexerConstants {
-        public static final double INDEXER_FEED_SPEED = 0.3;
+        public static final double INDEXER_FEED_SPEED = 1.0;
+        public static final double INDEXER_FEED_TIME = 1.0;
     }
 
     public IndexerSubsystem(IndexerIO indexerIO) {

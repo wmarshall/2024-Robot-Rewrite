@@ -17,10 +17,13 @@ public final class Constants {
     public static final int LEFT_INTAKE_CENTERING_MOTOR_ID = 3;
     public static final int INTAKE_MOTOR_ID = 4;
     public static final int INDEXER_MOTOR_ID = 5;
+    public static final int SHOOTER_TOP_MOTOR_ID = 6;
+    public static final int SHOOTER_BOTTOM_MOTOR_ID = 7;
   }
 
   public static class MotorConstants {
     public static final int NEO550_CURRENT_LIMIT = 20;
     public static final int NEO_CURRENT_LIMIT = 50;
+    public static final double MINUTE_TO_SECOND_CONVERSION = 1 / 60.0;
   }
 }

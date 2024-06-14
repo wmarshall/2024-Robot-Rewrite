@@ -13,14 +13,18 @@ import frc.robot.subsystems.indexer.IndexerHardware;
 import frc.robot.subsystems.indexer.IndexerSubsystem;
 import frc.robot.subsystems.intake.IntakeHardware;
 import frc.robot.subsystems.intake.IntakeSubsystem;
+import frc.robot.subsystems.shooter.ShooterHardware;
+import frc.robot.subsystems.shooter.ShooterSubsystem;
+import frc.robot.subsystems.shooter.ShooterSubsystem.ShooterConstants;
 
 public class RobotContainer {
 
   private final ClimberSubsystem climber = new ClimberSubsystem(new ClimberHardware());
   private final IntakeSubsystem intake = new IntakeSubsystem(new IntakeHardware());
   private final IndexerSubsystem indexer = new IndexerSubsystem(new IndexerHardware());
+  private final ShooterSubsystem shooter = new ShooterSubsystem(new ShooterHardware());
 
-  private final CommandFactory commandFactory = new CommandFactory(indexer, intake);
+  private final CommandFactory commandFactory = new CommandFactory(indexer, intake, shooter);
 
   private final CommandXboxController driverController = new CommandXboxController(
       PortConstants.DRIVER_CONTROLLER_PORT);
@@ -41,6 +45,8 @@ public class RobotContainer {
 
   private void configureDriverBindings() {
     driverController.rightTrigger().whileTrue(commandFactory.automaticIntake());
+    driverController.leftBumper().whileTrue(shooter.setShootSpeed(ShooterConstants.SHOOTER_SPEED));
+    driverController.rightBumper().onTrue(commandFactory.shootWhenUpToSpeed(ShooterConstants.SHOOTER_SPEED));
   }
 
   private void configureOperatorBindings() {
