@@ -5,12 +5,11 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Constants.MotorConstants;
 import frc.robot.Constants.MotorIdConstants;
+import frc.robot.Constants.SensorConstants;
 
 public class IndexerHardware implements IndexerIO {
     private final CANSparkMax indexerMotor;
     private final DigitalInput indexerSensor;
-
-    private static final int INDEXER_BEAM_BREAK_SENSOR_PORT = 2;
 
     public IndexerHardware() {
         indexerMotor = new CANSparkMax(MotorIdConstants.INDEXER_MOTOR_ID, MotorType.kBrushless);
@@ -19,7 +18,7 @@ public class IndexerHardware implements IndexerIO {
         indexerMotor.setInverted(false);
         indexerMotor.setSmartCurrentLimit(MotorConstants.NEO_CURRENT_LIMIT);
 
-        indexerSensor = new DigitalInput(INDEXER_BEAM_BREAK_SENSOR_PORT);
+        indexerSensor = new DigitalInput(SensorConstants.BEAM_BREAK_SENSOR_ID);
     }
 
     @Override
