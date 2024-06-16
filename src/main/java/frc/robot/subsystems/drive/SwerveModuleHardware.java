@@ -11,6 +11,7 @@ import com.revrobotics.SparkAbsoluteEncoder.Type;
 
 import edu.wpi.first.math.util.Units;
 import frc.robot.Constants.MotorConstants;
+import frc.robot.subsystems.drive.SwerveModule.SwerveModuleConstants;
 
 public class SwerveModuleHardware implements SwerveModuleIO {
     private final CANSparkMax drivingMotor;
@@ -30,36 +31,34 @@ public class SwerveModuleHardware implements SwerveModuleIO {
 
     private static final double STEERING_ENCORDER_POSITION_FACTOR = (2 * Math.PI); // radians
     private static final double STEERING_ENCODER_VELOCITY_FACTOR = (2 * Math.PI) / 60.0; // radians per second
-    public static final int DRIVING_MOTOR_PINION_TEETH_COUNT = 14;
 
-    public static final double DRIVING_MOTOR_FREE_SPEED_RPS = MotorConstants.NEO_FREE_SPEED_RPM / 60;
-    public static final double WHEEL_DIAMETER_IN_METERS = Units.inchesToMeters(3.0);
-    public static final double WHEEL_CIRCUMFERENCE_IN_METERS = WHEEL_DIAMETER_IN_METERS * Math.PI;
+    private static final double DRIVING_MOTOR_FREE_SPEED_RPS = MotorConstants.NEO_FREE_SPEED_RPM / 60;
+    private static final double WHEEL_DIAMETER_IN_METERS = Units.inchesToMeters(3.0);
+    private static final double WHEEL_CIRCUMFERENCE_IN_METERS = WHEEL_DIAMETER_IN_METERS * Math.PI;
     // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15
     // teeth on the bevel pinion
     // This is also the gear ratio (14T)
-    public static final double DRIVING_MOTOR_REDUCTION = (45.0 * 22) / (DRIVING_MOTOR_PINION_TEETH_COUNT * 15);
-    public static final double STEERING_MOTOR_REDUCTION = 9424d / 203;
-    public static final double DRIVE_WHEEL_FREE_SPEED_RPS = (DRIVING_MOTOR_FREE_SPEED_RPS
+
+    private static final double DRIVE_WHEEL_FREE_SPEED_RPS = (DRIVING_MOTOR_FREE_SPEED_RPS
             * WHEEL_CIRCUMFERENCE_IN_METERS)
-            / DRIVING_MOTOR_REDUCTION;
+            / SwerveModuleConstants.DRIVING_MOTOR_REDUCTION;
 
-    public static final double STEERING_ENCODER_POSITION_PID_MIN_INPUT = 0; // radians
-    public static final double STEERING_ENCODER_POSITION_PID_MAX_INPUT = STEERING_ENCORDER_POSITION_FACTOR; // radians
+    private static final double STEERING_ENCODER_POSITION_PID_MIN_INPUT = 0; // radians
+    private static final double STEERING_ENCODER_POSITION_PID_MAX_INPUT = STEERING_ENCORDER_POSITION_FACTOR; // radians
 
-    public static final double DRIVING_P = 0.2;
-    public static final double DRIVING_I = 0;
-    public static final double DRIVING_D = 0;
-    public static final double DRIVING_FF = 1 / DRIVE_WHEEL_FREE_SPEED_RPS;
-    public static final double DRIVING_MIN_OUTPUT = -1;
-    public static final double DRIVING_MAX_OUTPUT = 1;
+    private static final double DRIVING_P = 0.2;
+    private static final double DRIVING_I = 0;
+    private static final double DRIVING_D = 0;
+    private static final double DRIVING_FF = 1 / DRIVE_WHEEL_FREE_SPEED_RPS;
+    private static final double DRIVING_MIN_OUTPUT = -1;
+    private static final double DRIVING_MAX_OUTPUT = 1;
 
-    public static final double STEERING_P = 1.0;
-    public static final double STEERING_I = 0;
-    public static final double STEERING_D = 0.001;
-    public static final double STEERING_FF = 0;
-    public static final double STEERING_MIN_OUTPUT = -1;
-    public static final double STEERING_MAX_OUTPUT = 1;
+    private static final double STEERING_P = 1.0;
+    private static final double STEERING_I = 0;
+    private static final double STEERING_D = 0.001;
+    private static final double STEERING_FF = 0;
+    private static final double STEERING_MIN_OUTPUT = -1;
+    private static final double STEERING_MAX_OUTPUT = 1;
 
     public SwerveModuleHardware(int drivingCANId, int turningCANId, double chassisAngularOffset,
             String name) {

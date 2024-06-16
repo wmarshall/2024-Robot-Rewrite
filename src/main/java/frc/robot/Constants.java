@@ -5,9 +5,11 @@
 package frc.robot;
 
 public final class Constants {
-  public static class PortConstants {
+  public static class DriveControlConstants {
     public static final int DRIVER_CONTROLLER_PORT = 0;
     public static final int OPERATOR_CONTROLLER_PORT = 1;
+    public static final double DRIVE_DEADBAND = 0.05;
+    public static final int DRIVE_POWER_ADJUSTMENT = 3;
   }
 
   public static class MotorIdConstants {

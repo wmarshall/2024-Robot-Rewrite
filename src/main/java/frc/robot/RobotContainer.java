@@ -4,32 +4,34 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.Constants.PortConstants;
-import frc.robot.subsystems.climber.ClimberHardware;
+import frc.robot.Constants.DriveControlConstants;
 import frc.robot.subsystems.climber.ClimberSubsystem;
 import frc.robot.subsystems.climber.ClimberSubsystem.ClimberConstants;
-import frc.robot.subsystems.indexer.IndexerHardware;
+import frc.robot.subsystems.drive.DriveSubsystem;
 import frc.robot.subsystems.indexer.IndexerSubsystem;
-import frc.robot.subsystems.intake.IntakeHardware;
 import frc.robot.subsystems.intake.IntakeSubsystem;
-import frc.robot.subsystems.shooter.ShooterHardware;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem.ShooterConstants;
 
 public class RobotContainer {
+  private final RobotSubsystemFactory subsystemFactory = new RobotSubsystemFactory(RobotBase.isSimulation());
 
-  private final ClimberSubsystem climber = new ClimberSubsystem(new ClimberHardware());
-  private final IntakeSubsystem intake = new IntakeSubsystem(new IntakeHardware());
-  private final IndexerSubsystem indexer = new IndexerSubsystem(new IndexerHardware());
-  private final ShooterSubsystem shooter = new ShooterSubsystem(new ShooterHardware());
+  private final ClimberSubsystem climber = subsystemFactory.buildClimber();
+  private final IntakeSubsystem intake = subsystemFactory.buildIntake();
+  private final IndexerSubsystem indexer = subsystemFactory.buildIndexer();
+  private final ShooterSubsystem shooter = subsystemFactory.buildShooter();
+  private final DriveSubsystem drivetrain = subsystemFactory.buildDriveTrain();
 
   private final CommandFactory commandFactory = new CommandFactory(indexer, intake, shooter);
 
   private final CommandXboxController driverController = new CommandXboxController(
-      PortConstants.DRIVER_CONTROLLER_PORT);
+      DriveControlConstants.DRIVER_CONTROLLER_PORT);
   private final CommandXboxController operatorController = new CommandXboxController(
-      PortConstants.OPERATOR_CONTROLLER_PORT);
+      DriveControlConstants.OPERATOR_CONTROLLER_PORT);
 
   public RobotContainer() {
     configureDefaultCommands();
@@ -41,6 +43,19 @@ public class RobotContainer {
     climber.setDefaultCommand(climber.setConcurrentSpeed(0));
     indexer.setDefaultCommand(indexer.runIndexer(0));
     intake.setDefaultCommand(intake.runIntake(0));
+    shooter.setDefaultCommand(shooter.setShootSpeed(0));
+
+    // come back to this one
+    drivetrain.setDefaultCommand(new RunCommand(
+        () -> drivetrain.drive(
+            -Math.pow(MathUtil.applyDeadband(driverController.getLeftY(),
+                DriveControlConstants.DRIVE_DEADBAND), DriveControlConstants.DRIVE_POWER_ADJUSTMENT),
+            -Math.pow(MathUtil.applyDeadband(driverController.getLeftX(),
+                DriveControlConstants.DRIVE_DEADBAND), DriveControlConstants.DRIVE_POWER_ADJUSTMENT),
+            -Math.pow(MathUtil.applyDeadband(driverController.getRightX(),
+                DriveControlConstants.DRIVE_DEADBAND), DriveControlConstants.DRIVE_POWER_ADJUSTMENT),
+            true),
+        drivetrain));
   }
 
   private void configureDriverBindings() {

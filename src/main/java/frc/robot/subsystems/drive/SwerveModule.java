@@ -10,6 +10,17 @@ public class SwerveModule {
     double chassisAngularOffset;
     SwerveModuleIO swerveModuleIO;
 
+    public static final class SwerveModuleConstants {
+        public static final int DRIVING_MOTOR_PINION_TEETH_COUNT = 14;
+        protected static final double DRIVING_MOTOR_REDUCTION = (45.0 * 22) / (DRIVING_MOTOR_PINION_TEETH_COUNT * 15);
+        protected static final double STEERING_MOTOR_REDUCTION = 9424d / 203;
+
+        public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
+        public static final double kFrontRightChassisAngularOffset = 0;
+        public static final double kRearLeftChassisAngularOffset = Math.PI;
+        public static final double kRearRightChassisAngularOffset = Math.PI / 2;
+    }
+
     private final SwerveModuleIOInputs inputs = new SwerveModuleIOInputs();
 
     // name is used for smart dashboard values to distinguish between modules
