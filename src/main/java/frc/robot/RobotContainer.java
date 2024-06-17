@@ -36,7 +36,7 @@ public class RobotContainer {
   }
 
   private void configureDefaultCommands() {
-    climber.setDefaultCommand(climber.setConcurrentSpeed(0));
+    climber.setDefaultCommand(climber.setConcurrentSpeed(() -> 0));
     indexer.setDefaultCommand(indexer.runIndexer(0));
     intake.setDefaultCommand(intake.runIntake(0));
     shooter.setDefaultCommand(shooter.setShootSpeed(0));
@@ -49,11 +49,11 @@ public class RobotContainer {
   }
 
   private void configureOperatorBindings() {
-    operatorController.rightTrigger().whileTrue(climber.setRightSpeed(-ClimberConstants.CLIMBER_SPEED_SINGLE));
-    operatorController.leftTrigger().whileTrue(climber.setLeftSpeed(-ClimberConstants.CLIMBER_SPEED_SINGLE));
-    operatorController.rightBumper().whileTrue(climber.setRightSpeed(ClimberConstants.CLIMBER_SPEED_SINGLE));
-    operatorController.leftBumper().whileTrue(climber.setLeftSpeed(ClimberConstants.CLIMBER_SPEED_SINGLE));
-    operatorController.b().whileTrue(climber.setConcurrentSpeed(ClimberConstants.CLIMBER_SPEED_CONCURRENT));
-    operatorController.a().whileTrue(climber.setConcurrentSpeed(-ClimberConstants.CLIMBER_SPEED_CONCURRENT));
+    operatorController.rightTrigger().whileTrue(climber.setRightSpeed(() -> -ClimberConstants.CLIMBER_SPEED_SINGLE));
+    operatorController.leftTrigger().whileTrue(climber.setLeftSpeed(() -> -ClimberConstants.CLIMBER_SPEED_SINGLE));
+    operatorController.rightBumper().whileTrue(climber.setRightSpeed(() -> ClimberConstants.CLIMBER_SPEED_SINGLE));
+    operatorController.leftBumper().whileTrue(climber.setLeftSpeed(() -> ClimberConstants.CLIMBER_SPEED_SINGLE));
+    operatorController.b().whileTrue(climber.setConcurrentSpeed(() -> ClimberConstants.CLIMBER_SPEED_CONCURRENT));
+    operatorController.a().whileTrue(climber.setConcurrentSpeed(() -> -ClimberConstants.CLIMBER_SPEED_CONCURRENT));
   }
 }
