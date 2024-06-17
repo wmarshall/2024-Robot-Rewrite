@@ -1,12 +1,16 @@
 package frc.robot;
 
 import frc.robot.subsystems.climber.ClimberHardware;
+import frc.robot.subsystems.climber.ClimberIO;
 import frc.robot.subsystems.climber.ClimberSubsystem;
 import frc.robot.subsystems.indexer.IndexerHardware;
+import frc.robot.subsystems.indexer.IndexerIO;
 import frc.robot.subsystems.indexer.IndexerSubsystem;
 import frc.robot.subsystems.intake.IntakeHardware;
+import frc.robot.subsystems.intake.IntakeIO;
 import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterHardware;
+import frc.robot.subsystems.shooter.ShooterIO;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 
 public class RobotSubsystemFactory {
@@ -17,18 +21,22 @@ public class RobotSubsystemFactory {
     }
 
     protected IntakeSubsystem buildIntake() {
-        return new IntakeSubsystem(new IntakeHardware());
+        IntakeIO impl = isSim ? new IntakeIO.Placebo() : new IntakeHardware();
+        return new IntakeSubsystem(impl);
     }
 
     protected IndexerSubsystem buildIndexer() {
-        return new IndexerSubsystem(new IndexerHardware());
+        IndexerIO impl = isSim ? new IndexerIO.Placebo() : new IndexerHardware();
+        return new IndexerSubsystem(impl);
     }
 
     protected ShooterSubsystem buildShooter() {
-        return new ShooterSubsystem(new ShooterHardware());
+        ShooterIO impl = isSim ? new ShooterIO.Placebo() : new ShooterHardware();
+        return new ShooterSubsystem(impl);
     }
 
     protected ClimberSubsystem buildClimber() {
-        return new ClimberSubsystem(new ClimberHardware());
+        ClimberIO impl = isSim ? new ClimberIO.Placebo() : new ClimberHardware();
+        return new ClimberSubsystem(impl);
     }
 }
