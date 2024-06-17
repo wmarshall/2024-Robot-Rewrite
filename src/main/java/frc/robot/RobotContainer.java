@@ -4,14 +4,11 @@
 
 package frc.robot;
 
-import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.RobotBase;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.DriveControlConstants;
 import frc.robot.subsystems.climber.ClimberSubsystem;
 import frc.robot.subsystems.climber.ClimberSubsystem.ClimberConstants;
-import frc.robot.subsystems.drive.DriveSubsystem;
 import frc.robot.subsystems.indexer.IndexerSubsystem;
 import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
@@ -24,7 +21,6 @@ public class RobotContainer {
   private final IntakeSubsystem intake = subsystemFactory.buildIntake();
   private final IndexerSubsystem indexer = subsystemFactory.buildIndexer();
   private final ShooterSubsystem shooter = subsystemFactory.buildShooter();
-  private final DriveSubsystem drivetrain = subsystemFactory.buildDriveTrain();
 
   private final CommandFactory commandFactory = new CommandFactory(indexer, intake, shooter);
 
@@ -44,18 +40,6 @@ public class RobotContainer {
     indexer.setDefaultCommand(indexer.runIndexer(0));
     intake.setDefaultCommand(intake.runIntake(0));
     shooter.setDefaultCommand(shooter.setShootSpeed(0));
-
-    // come back to this one
-    drivetrain.setDefaultCommand(new RunCommand(
-        () -> drivetrain.drive(
-            -Math.pow(MathUtil.applyDeadband(driverController.getLeftY(),
-                DriveControlConstants.DRIVE_DEADBAND), DriveControlConstants.DRIVE_POWER_ADJUSTMENT),
-            -Math.pow(MathUtil.applyDeadband(driverController.getLeftX(),
-                DriveControlConstants.DRIVE_DEADBAND), DriveControlConstants.DRIVE_POWER_ADJUSTMENT),
-            -Math.pow(MathUtil.applyDeadband(driverController.getRightX(),
-                DriveControlConstants.DRIVE_DEADBAND), DriveControlConstants.DRIVE_POWER_ADJUSTMENT),
-            true),
-        drivetrain));
   }
 
   private void configureDriverBindings() {
