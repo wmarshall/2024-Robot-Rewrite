@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ClimberSubsystem extends SubsystemBase {
     private final ClimberIO climberIO;
-    private Debouncer leftDebouncer, rightDebouncer = new Debouncer(0.025);
+    private final Debouncer leftDebouncer = new Debouncer(0.025);
+    private final Debouncer rightDebouncer = new Debouncer(0.025);
+
 
     public static final class ClimberConstants {
         protected static final double CLIMBER_HEIGHT_UPPER_LIMIT = 0.8;
