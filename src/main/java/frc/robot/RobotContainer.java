@@ -5,6 +5,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.DriveControlConstants;
 import frc.robot.subsystems.climber.ClimberSubsystem;
@@ -30,6 +32,7 @@ public class RobotContainer {
       DriveControlConstants.OPERATOR_CONTROLLER_PORT);
 
   public RobotContainer() {
+    SmartDashboard.putData(CommandScheduler.getInstance());
     configureDefaultCommands();
     configureDriverBindings();
     configureOperatorBindings();
