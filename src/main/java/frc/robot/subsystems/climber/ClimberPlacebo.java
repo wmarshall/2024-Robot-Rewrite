@@ -20,4 +20,5 @@ public final class ClimberPlacebo implements ClimberIO {
         return 0;
     }
 
+    public void periodic(){}
 }

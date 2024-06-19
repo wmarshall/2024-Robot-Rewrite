@@ -2,7 +2,7 @@ package frc.robot;
 
 import frc.robot.subsystems.climber.ClimberHardware;
 import frc.robot.subsystems.climber.ClimberIO;
-import frc.robot.subsystems.climber.ClimberPlacebo;
+import frc.robot.subsystems.climber.ClimberSim;
 import frc.robot.subsystems.climber.ClimberSubsystem;
 import frc.robot.subsystems.indexer.IndexerHardware;
 import frc.robot.subsystems.indexer.IndexerIO;
@@ -40,7 +40,7 @@ public class RobotSubsystemFactory {
     }
 
     protected ClimberSubsystem buildClimber() {
-        ClimberIO impl = isSim ? new ClimberPlacebo() : new ClimberHardware();
+        ClimberIO impl = isSim ? new ClimberSim() : new ClimberHardware();
         return new ClimberSubsystem(impl);
     }
 }

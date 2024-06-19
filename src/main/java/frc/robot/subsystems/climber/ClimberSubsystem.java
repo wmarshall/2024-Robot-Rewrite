@@ -41,7 +41,7 @@ public class ClimberSubsystem extends SubsystemBase {
             } else {
                 climberIO.setLeftSpeed(speed);
             }
-        });
+        }).withName("setConcurrentSpeed");
     }
 
     public Command setRightSpeed(DoubleSupplier speedSupplier) {
@@ -66,7 +66,7 @@ public class ClimberSubsystem extends SubsystemBase {
                 climberIO.setRightSpeed(speed);
             }
             climberIO.setLeftSpeed(0);
-        });
+        }).withName("setRightSpeed");
 
     }
 
@@ -81,7 +81,7 @@ public class ClimberSubsystem extends SubsystemBase {
             }
             climberIO.setRightSpeed(0);
 
-        });
+        }).withName("setLeftSpeed");
     }
 
     private boolean isLeftSideStalling() {
@@ -90,5 +90,10 @@ public class ClimberSubsystem extends SubsystemBase {
 
     private boolean isRightSideStalling() {
         return rightDebouncer.calculate(Math.abs(climberIO.getRightMotorCurrent()) > CURRENT_THRESHOLD);
+    }
+
+    @Override
+    public void periodic() {
+        climberIO.periodic();
     }
 }
