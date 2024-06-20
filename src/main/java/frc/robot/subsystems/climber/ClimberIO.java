@@ -8,4 +8,5 @@ public interface ClimberIO {
     public double getRightMotorCurrent();
 
     public double getLeftMotorCurrent();
+    public void periodic();
 }

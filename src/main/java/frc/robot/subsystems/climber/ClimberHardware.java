@@ -58,4 +58,6 @@ public class ClimberHardware implements ClimberIO {
     public double getLeftMotorCurrent() {
         return leftMotor.getOutputCurrent();
     }
+
+    public void periodic(){};
 }
