@@ -15,6 +15,7 @@ import frc.robot.subsystems.indexer.IndexerSubsystem;
 import frc.robot.subsystems.intake.IntakeSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem;
 import frc.robot.subsystems.shooter.ShooterSubsystem.ShooterConstants;
+import frc.utils.CommandSwitchProController;
 
 public class RobotContainer {
   private final RobotSubsystemFactory subsystemFactory = new RobotSubsystemFactory(RobotBase.isSimulation());
@@ -28,7 +29,7 @@ public class RobotContainer {
 
   private final CommandXboxController driverController = new CommandXboxController(
       DriveControlConstants.DRIVER_CONTROLLER_PORT);
-  private final CommandXboxController operatorController = new CommandXboxController(
+  private final CommandSwitchProController operatorController = new CommandSwitchProController(
       DriveControlConstants.OPERATOR_CONTROLLER_PORT);
 
   public RobotContainer() {
